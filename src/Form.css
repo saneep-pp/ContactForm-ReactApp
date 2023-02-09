@@ -1,0 +1,21 @@
+.flex-conatainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 5px solid black;
+    border-radius: 5px;
+    width: 400px;
+
+}
+
+input{
+    border-radius: 5px;
+    border: 2px solid grey;
+    display: flex;
+}
+button {
+    border-radius: 5px;
+    background-color: gray;
+    margin: 10px;
+
+}
