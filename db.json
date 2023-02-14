@@ -1,3 +1,18 @@
 {
-  "contacts": []
+  "contacts": [
+    {
+      "name": "sani",
+      "email": "sani@email.com",
+      "phone": "9866367377",
+      "id": 1676368430371,
+      "fav": false
+    },
+    {
+      "name": "rithul",
+      "email": "rithul@gmail.com",
+      "phone": "8876543290",
+      "id": 1676369691091,
+      "fav": false
+    }
+  ]
 }

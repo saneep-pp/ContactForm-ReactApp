@@ -5,6 +5,7 @@ import NotFoundPage from "./NotFoundPage";
 import Favourites from "./Favourites";
 import { useState, useEffect } from "react";
 import axios from "axios";
+
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 const App = () => {
   //Created states to store contacs
@@ -12,14 +13,13 @@ const App = () => {
 
   //For rendering repeatly use useEffect Hooks
   useEffect(() => {
-
     const getContacts = async () => {
       const contactsFormServer = await fetchContacts();
       setContacts(contactsFormServer);
     };
     getContacts();
   }, []);
-//Add Styles to Heading
+  //Add Styles to Heading
   const headstyle = {
     color: "white",
     backgroundColor: "Black",
@@ -27,11 +27,9 @@ const App = () => {
 
     fontFamily: "Arial",
   };
-  
-  
+
   const formSub = async (data) => {
-    try{
-      
+    try {
       // const res = await fetch("http://localhost:3004/contacts", {
       //   method: "POST",
       //   headers: {
@@ -42,21 +40,19 @@ const App = () => {
       // const newdata = await res.json();
       // console.log(newdata);
 
-      let res = await axios.post('http://localhost:3004/contacts',data)
-      console.log('hiiii',res);
-      setContacts([...contacts,res.data]);
-    }catch(error){
-      console.log('error',error);
+      let res = await axios.post("http://localhost:3004/contacts", data);
+      // console.log('hi',res);
+      setContacts([...contacts, res.data]);
+    } catch (error) {
+      // console.log('error',error);
     }
-  
   };
 
   const fetchContacts = async () => {
     const res = await fetch("http://localhost:3004/contacts");
     const data = await res.json();
-    
+
     return data;
-    
   };
   const deleteContact = async (id) => {
     const res = await fetch(`http://localhost:3004/contacts/${id}`, {
@@ -70,14 +66,44 @@ const App = () => {
     }
   };
 
-  const favToggle = (id) => {
+  //get single Contact
+  const getCon = async (id) => {
+    //const res = await fetch(`http://localhost:3004/contacts/${id}`);
+    let res = await axios.get(`http://localhost:3004/contacts/${id}`);
+
+    //console.log(res.data);
+    const data =  res.data;
+    // const data =  res.join();
+    // console.log(typeof res);
+    // console.log(Object.keys(res));
+    // console.log(Object.values(res));
+    
+    return data;
+  };
+
+  const favToggle = async (id) => {
+    try{
+      
+      const singleCon = await getCon(id);
+      const upTask = { ...singleCon, fav: !singleCon.fav };
+       const res = await axios.put(`http://localhost:3004/contacts/${id}`, upTask);
+      console.log(res.data.fav);  
+        
+      // setContacts([...contacts, res.upTask]);
+      
+    
+if(res.status===200){
     let updatedContact = contacts.map((singleContact) => {
       return singleContact.id === id
         ? { ...singleContact, fav: !singleContact.fav }
         : singleContact;
     });
     setContacts(updatedContact);
-  };
+  }
+}catch(error){
+  console.log("error in toggle is",error);
+}
+};
 
   return (
     <>
