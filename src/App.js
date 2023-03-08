@@ -24,7 +24,8 @@ const App = () => {
     color: "white",
     backgroundColor: "Black",
     padding: "10px",
-
+    margin:"0px",
+    width:"100%",
     fontFamily: "Arial",
   };
 

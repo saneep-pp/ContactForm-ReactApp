@@ -3,7 +3,7 @@ import Contact from "./Contact";
 const Favourites=({contacts,deleteContact,favToggle})=>{
     return(
         
-        <div className="card">
+        <div className="Favcard">
           <div className="container">
            {
             contacts.map((singleContact)=>{

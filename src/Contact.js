@@ -5,7 +5,7 @@ const Contact = (props) => {
   let fav=props.contact.fav;
   
   return (
-    <div>
+    <div className="main">
       <div className="card">
         <div className="container">
           <h4>

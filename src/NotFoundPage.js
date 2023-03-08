@@ -1,9 +1,12 @@
+import "./NotFoundPage.css";
 const NotFoundPage=()=>{
+
+
     return(
-        <div>
-            <center>
+        <div className="notFound">
+            
                 Sorry. Your Requested Page is Not Found...!
-            </center>
+           
         </div>
     )
 }

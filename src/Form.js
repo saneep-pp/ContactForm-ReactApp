@@ -49,6 +49,7 @@ function Form(props) {
                     message:"invalid phone no"}})}/>
                     {errors.phone&&(<small style={{color: "red"}} >{errors.phone.message}</small>)}
                 </div>
+                <br/>
                 <div>
                     <button  type="submit" id="addcontact">Add Contact</button>
                 </div>
